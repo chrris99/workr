@@ -1,0 +1,11 @@
+<div class="flex flex-wrap bg-gray-100 w-full">
+  <div class="hidden xl:block w-2/12 bg-white rounded p-3 shadow-lg h-screen sticky top-0">
+    <app-side-menu></app-side-menu>
+  </div>
+  <div class="w-full xl:w-10/12">
+    <app-navbar class="xl:hidden"></app-navbar>
+    <div class="p-4">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
