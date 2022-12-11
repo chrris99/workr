@@ -8,11 +8,11 @@ using Workr.Domain.Entities;
 
 namespace Workr.Infrastructure.Auth;
 
-public sealed class JwtProvider : IJwtProvider
+public sealed class JwtTokenProvider : ITokenProvider
 {
     private readonly JwtOptions _options;
     
-    public JwtProvider(IOptions<JwtOptions> options)
+    public JwtTokenProvider(IOptions<JwtOptions> options)
     {
         _options = options.Value;
     }
@@ -32,7 +32,6 @@ public sealed class JwtProvider : IJwtProvider
                 new ("userId", user.Id),
                 new ("email", user.Email)
             }),
-            // TODO: Add expiration date
             SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256)
         };
         

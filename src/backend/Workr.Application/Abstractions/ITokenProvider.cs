@@ -3,14 +3,14 @@
 namespace Workr.Application.Abstractions;
 
 /// <summary>
-/// JWT Provider interface.
+/// Authentication token provider interface.
 /// </summary>
-public interface IJwtProvider
+public interface ITokenProvider
 {
     /// <summary>
-    /// Creates the JWT for the specified user.
+    /// Creates the authentication token for the specified user.
     /// </summary>
     /// <param name="user">The user.</param>
-    /// <returns>The JWT for the specified user.</returns>
+    /// <returns>The authentication token for the specified user.</returns>
     string Create(User user);
 }

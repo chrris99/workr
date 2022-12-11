@@ -1,19 +1,10 @@
-version: '3.4'
+version: '3.8'
 
 services:
-  mongo:
-    image: mongo
-    restart: always
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
-
-  mongo-express:
-    image: mongo-express
-    restart: always
+      - MSSQL_SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
     ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
-      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
-      ME_CONFIG_MONGODB_URL: mongodb://admin:admin@mongo:27017/
+      - "1433:1433"

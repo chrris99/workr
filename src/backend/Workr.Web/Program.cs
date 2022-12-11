@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Workr.Api;
 using Workr.Application.Abstractions;
 using Workr.Application.Services;
@@ -19,13 +20,46 @@ builder.Services
     .AddApplicationPart(AssemblyReference.Assembly)
     .AddControllersAsServices();
 
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen();
 
+// Configure Swagger
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Workout Tracker API",
+        Description = "Provides a RESTful API for workout tracker applications"
+    });
+    
+    var xmlFilename = $"{AssemblyReference.Assembly.GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
+
+// Configure Database Connection
 builder.Services
     .AddDbContext<ApplicationDbContext>(options =>
-        options.UseInMemoryDatabase("workr"))
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+    })
     .AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+// Configure Identity Options
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.User.AllowedUserNameCharacters =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+/ ";
+
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 1;
+});
 
 builder.Services
     .AddAuthentication(options =>
@@ -50,10 +84,7 @@ builder.Services
 
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(JwtOptions.Jwt));
 
-builder.Services.AddScoped<IJwtProvider, JwtProvider>();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ITokenProvider, JwtTokenProvider>();
 
 builder.Services.AddCors(options =>
 {

@@ -1,9 +1,10 @@
-﻿using Workr.Application.Contracts.Auth;
-using Workr.Domain.Abstractions;
+﻿using Workr.Domain.Abstractions;
+using Workr.Domain.Entities;
 
 namespace Workr.Application.Services;
 
 public interface IAuthService
 {
-    Task<Result<TokenResponse>> RegisterAsync(string email, string password);
+    Task<Result<User>> RegisterAsync(string email, string name, string password);
+    Task<Result<User>> LoginAsync(string email, string password);
 }

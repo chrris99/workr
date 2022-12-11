@@ -14,11 +14,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Workr.Contracts\Workr.Contracts.csproj" />
       <ProjectReference Include="..\Workr.Domain\Workr.Domain.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Queries" />
     </ItemGroup>
 
 </Project>
