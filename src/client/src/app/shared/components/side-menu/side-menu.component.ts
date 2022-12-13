@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-side-menu',
-  templateUrl: './side-menu.component.html',
-  styleUrls: ['./side-menu.component.sass']
+  templateUrl: './side-menu.component.html'
 })
 export class SideMenuComponent implements OnInit {
+  constructor(public auth: AuthService) { }
 
-  constructor() { }
+  ngOnInit(): void { }
 
-  ngOnInit(): void {
+  public logout(): void {
+    this.auth.logout();
   }
-
 }

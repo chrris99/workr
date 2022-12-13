@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html'
+  selector: 'app-title',
+  templateUrl: './title.component.html',
 })
-export class LayoutComponent implements OnInit {
+export class TitleComponent implements OnInit {
   @Input() title: string | undefined;
   @Input() text: string | undefined;
 

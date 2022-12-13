@@ -1,13 +1,62 @@
 <app-layout>
   <main class="w-3/4 mx-auto">
-    <div class="flex flex-col space-y-5">
-      <app-exercise-card></app-exercise-card>
-      <app-exercise-card></app-exercise-card>
-      <app-exercise-card></app-exercise-card>
-      <app-exercise-card></app-exercise-card>
-      <app-exercise-card></app-exercise-card>
-      <app-exercise-card></app-exercise-card>
-      <app-exercise-card></app-exercise-card>
-    </div>
+    <ng-container
+    *ngIf="exercises.length != 0; else exercisePlaceholder"
+    class="flex flex-col space-y-5"
+    >
+      <app-exercise-card
+        name="Bench press"
+        description="Lie down on a flat bench with your feet on the floor and your back straight. Grasp the barbell or dumbbells with an overhand grip, slightly wider than shoulder-width apart. Lower the weight slowly towards your chest, keeping your elbows close to your body, then pause and push the weight back up to the starting position."
+        type="weighted"
+      ></app-exercise-card>
+
+      <app-exercise-card
+        name="Push up"
+        description="Start by lying on the ground with your palms flat on the floor, slightly wider than shoulder-width apart. Engage your core and glutes to keep your body in a straight line, and then push up with your arms, straightening them as you rise. Lower yourself back down to the ground, keeping your body in a straight line."
+        type="bodyweight"
+      ></app-exercise-card>
+
+      <app-exercise-card
+        name="Bicep curl"
+        description="Stand with your feet shoulder-width apart and holding a pair of dumbbells at your sides, palms facing forward. Engage your core and keep your chest lifted as you bend your elbows and lift the dumbbells up toward your shoulders. Lower the dumbbells back down to the starting position, and repeat for the desired number of repetitions. You can also do this exercise using a barbell instead of dumbbells, if you prefer."
+        type="weighted"
+        muscles=
+      ></app-exercise-card>
+
+    </ng-container>
+
+    <ng-template #exercisePlaceholder>
+      <p>
+        No exercises to display
+      </p>
+    </ng-template>
+
+    <button
+      (click)="openExerciseDialog()"
+      class="group relative inline-flex items-center overflow-hidden rounded bg-indigo-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
+    >
+      <span
+        class="absolute right-0 translate-x-full transition-transform group-hover:-translate-x-4"
+      >
+        <svg
+          class="h-5 w-5"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      </span>
+
+      <span class="text-sm font-medium transition-all group-hover:mr-4">
+        Add
+      </span>
+    </button>
   </main>
 </app-layout>

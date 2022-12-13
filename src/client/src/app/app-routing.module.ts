@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) },
   { path: 'exercise', loadChildren: () => import('./modules/exercise/exercise.module').then(m => m.ExerciseModule) },
   { path: 'workout', loadChildren: () => import('./modules/workout/workout.module').then(m => m.WorkoutModule) },
+  { path: '', redirectTo: '/auth/register', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];
 
