@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -10,9 +10,9 @@ export class LoginComponent implements OnInit {
   title: string = 'Get started today! 💪';
   description: string = 'Become the best version of yourself! Create and manage exercises, workout templates and workout plans!';
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService) {
+  constructor(private formBuilder: UntypedFormBuilder, private auth: AuthService) {
     this.form = this.formBuilder.group({
       email: [ '', [Validators.required] ],
       password: [ '', [Validators.required] ]
