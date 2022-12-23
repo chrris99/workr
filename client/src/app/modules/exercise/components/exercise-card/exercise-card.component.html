@@ -1,0 +1,40 @@
+<article class="rounded-xl bg-white shadow-lg">
+  <div class="flex items-start p-6">
+    <a href="#" class="block shrink-0">
+      <img
+        src="https://clipartix.com/wp-content/uploads/2016/05/Exercise-free-clip-art-people-exercising-free-vector-for-free.png"
+        class="h-10 w-10 object-cover"
+      />
+    </a>
+
+    <div class="ml-4">
+      <div class="flex flex-row justify-between">
+        <h3 class="font-medium sm:text-lg">
+          {{ name }}
+        </h3>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+        </svg>
+
+      </div>
+
+
+      <div class="mt-2 sm:flex sm:items-center sm:gap-2">
+        <span *ngFor="let muscle of muscles" class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+          {{ muscle }}
+        </span>
+      </div>
+
+      <p class="text-sm text-gray-700 mt-2">
+        {{ description | slice:0:200 }} ...
+      </p>
+    </div>
+  </div>
+
+  <div class="flex justify-end">
+    <strong class="-mr-[2px] -mb-[2px] inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-indigo-600 py-1.5 px-3 text-white">
+
+      <span class="text-[10px] font-medium sm:text-xs"> {{ type }} </span>
+    </strong>
+  </div>
+</article>

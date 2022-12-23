@@ -1,0 +1,32 @@
+<app-layout [title]="title" [text]="description">
+  <section class="flex justify-center mt-8">
+    <div class="flex flex-col">
+      <ng-container *ngIf="exercises.length != 0; else exercisePlaceholder">
+        <div class="grid grid-cols-3 row-auto gap-4">
+          <app-exercise-card *ngFor="let exercise of exercises"
+            [name]="exercise.name"
+            [description]="exercise.description"
+            [type]="exercise.type"
+            [muscles]="exercise.muscleGroups!"
+          ></app-exercise-card>
+
+          <button
+            (click)="openExerciseDialog()"
+            type="button"
+            class="w-16 h-16 self-center justify-self-center text-white bg-indigo-600 hover:bg-indigo-700 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 mx-auto">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <span class="sr-only">Add exercise</span>
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-template #exercisePlaceholder class="mx-auto max-w-lg">
+        <p>
+          No exercises to display
+        </p>
+      </ng-template>
+    </div>
+  </section>
+</app-layout>
