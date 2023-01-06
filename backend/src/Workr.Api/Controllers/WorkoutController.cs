@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Workr.Api.Contracts.Workout;
-using Workr.Domain.Abstractions;
+using Workr.Core;
 
 namespace Workr.Api.Controllers;
 
@@ -16,9 +16,9 @@ public sealed class WorkoutController : ControllerBase
     /// </summary>
     public WorkoutController()
     {
-        
+
     }
-    
+
     /// <summary>
     /// Create a new workout.
     /// </summary>
@@ -42,7 +42,7 @@ public sealed class WorkoutController : ControllerBase
     {
         throw new NotImplementedException();
     }
-    
+
     /// <summary>
     /// Get all workouts.
     /// </summary>

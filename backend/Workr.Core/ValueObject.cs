@@ -1,4 +1,4 @@
-﻿namespace Workr.Domain.Abstractions;
+﻿namespace Workr.Core;
 
 /// <summary>
 /// Abstract base class for value objects.
@@ -16,10 +16,10 @@ public abstract class ValueObject : IEquatable<ValueObject>
     {
         if (obj is null) return false;
         if (obj.GetType() != GetType()) return false;
-        
+
         return obj is ValueObject valueObject && GetValues().SequenceEqual(valueObject.GetValues());
     }
-    
+
     /// <inheritdoc />
     public bool Equals(ValueObject? other)
     {
@@ -40,7 +40,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
     public override int GetHashCode()
     {
         HashCode hashCode = default;
-        
+
         foreach (var obj in GetValues())
         {
             hashCode.Add(obj);

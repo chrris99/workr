@@ -1,4 +1,4 @@
-﻿namespace Workr.Domain.Abstractions;
+﻿namespace Workr.Core;
 
 /// <summary>
 /// Abstract base class for entities.
@@ -13,7 +13,7 @@ public abstract class Entity : IEquatable<Entity>
     {
         Id = id;
     }
-    
+
     /// <summary>
     /// Gets the entity identifier.
     /// </summary>
@@ -36,7 +36,7 @@ public abstract class Entity : IEquatable<Entity>
     public bool Equals(Entity? other)
     {
         if (ReferenceEquals(null, other)) return false;
-        
+
         return Id.Equals(other.Id);
     }
 
@@ -46,7 +46,7 @@ public abstract class Entity : IEquatable<Entity>
         if (ReferenceEquals(null, obj)) return false;
         if (obj.GetType() != GetType()) return false;
         if (obj.GetType() != typeof(Entity)) return false;
-        
+
         return Equals(obj as Entity);
     }
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Workr.Api.Contracts.Workout;
-using Workr.Domain.Abstractions;
+using Workr.Core;
 
 namespace Workr.Api.Controllers;
 
@@ -15,7 +15,7 @@ public sealed class TemplateController : ControllerBase
     /// Initializes a new instance of the <see cref="TemplateController"/> class.
     /// </summary>
     public TemplateController() { }
-    
+
     /// <summary>
     /// Create a new workout template.
     /// </summary>
@@ -39,7 +39,7 @@ public sealed class TemplateController : ControllerBase
     {
         throw new NotImplementedException();
     }
-    
+
     /// <summary>
     /// Get all workout templates.
     /// </summary>

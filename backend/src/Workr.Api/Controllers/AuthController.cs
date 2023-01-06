@@ -2,7 +2,7 @@
 using Workr.Api.Contracts.Auth;
 using Workr.Application.Abstractions;
 using Workr.Application.Services;
-using Workr.Domain.Abstractions;
+using Workr.Core;
 
 namespace Workr.Api.Controllers;
 
@@ -26,7 +26,7 @@ public sealed class AuthController : ControllerBase
         _authService = authService;
         _tokenProvider = tokenProvider;
     }
-    
+
     /// <summary>
     /// Create and register a user to the database.
     /// </summary>
@@ -50,7 +50,7 @@ public sealed class AuthController : ControllerBase
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
         var createResult = await _authService.RegisterAsync(request.Email, request.Name, request.Password);
-        
+
         if (createResult.IsFailure)
             return BadRequest(createResult.Error);
 
@@ -76,14 +76,14 @@ public sealed class AuthController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         var loginResult = await _authService.LoginAsync(request.Email, request.Password);
-        
+
         if (loginResult.IsFailure)
             return BadRequest(loginResult.Error);
 
         var user = loginResult.Value;
 
         var token = _tokenProvider.Create(user);
-        
+
         return Ok(new AuthResponse
         {
             Email = user.Email,

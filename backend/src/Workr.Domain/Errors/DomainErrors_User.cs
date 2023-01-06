@@ -1,11 +1,11 @@
-﻿using Workr.Domain.Abstractions;
+﻿using Workr.Core;
 
 namespace Workr.Domain.Errors;
 
 public static partial class DomainErrors
 {
     private const string UserBase = nameof(User);
-    
+
     public static class User
     {
         public static Error CreateFailed =>

@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 
-namespace Workr.Domain.Abstractions;
+namespace Workr.Core;
 
 public abstract class Enumeration<TEnum> : IEquatable<Enumeration<TEnum>>
     where TEnum : Enumeration<TEnum>
 {
     private static readonly Dictionary<int, TEnum> Enumerations = CreateEnumerations();
-    
+
     public int Value { get; protected init; }
 
     public string Name { get; protected init; } = string.Empty;
@@ -28,7 +28,7 @@ public abstract class Enumeration<TEnum> : IEquatable<Enumeration<TEnum>>
             .Values
             .SingleOrDefault(e => e.Name == name);
     }
-    
+
     public bool Equals(Enumeration<TEnum>? other)
     {
         if (other is null) return false;

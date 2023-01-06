@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.Infrastructure", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.Architecture.UnitTests", "test\Workr.Architecture.UnitTests\Workr.Architecture.UnitTests.csproj", "{FA549F8F-384A-4F85-A8E8-6D814C85CFF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.Core", "Workr.Core\Workr.Core.csproj", "{C16AAF01-0B63-42B7-80E2-7374F430DA97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{FA549F8F-384A-4F85-A8E8-6D814C85CFF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA549F8F-384A-4F85-A8E8-6D814C85CFF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA549F8F-384A-4F85-A8E8-6D814C85CFF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C16AAF01-0B63-42B7-80E2-7374F430DA97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16AAF01-0B63-42B7-80E2-7374F430DA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16AAF01-0B63-42B7-80E2-7374F430DA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16AAF01-0B63-42B7-80E2-7374F430DA97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

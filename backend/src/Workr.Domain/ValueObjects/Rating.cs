@@ -1,11 +1,11 @@
-﻿using Workr.Domain.Abstractions;
+﻿using Workr.Core;
 
 namespace Workr.Domain.ValueObjects;
 
 public sealed class Rating : ValueObject
 {
     public int Value { get; }
-    
+
     public Rating(int value)
     {
         Value = value;

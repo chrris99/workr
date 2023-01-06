@@ -1,4 +1,4 @@
-﻿using Workr.Domain.Abstractions;
+﻿using Workr.Core;
 
 namespace Workr.Domain.ValueObjects;
 
@@ -10,7 +10,7 @@ public sealed class Weight : ValueObject
     {
         Value = value;
     }
-    
+
     protected override IEnumerable<object> GetValues()
     {
         yield return Value;

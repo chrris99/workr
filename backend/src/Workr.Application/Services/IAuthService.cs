@@ -1,4 +1,4 @@
-﻿using Workr.Domain.Abstractions;
+﻿using Workr.Core;
 using Workr.Domain.Entities;
 
 namespace Workr.Application.Services;

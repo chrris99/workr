@@ -1,4 +1,4 @@
-﻿namespace Workr.Domain.Abstractions;
+﻿namespace Workr.Core;
 
 /// <summary>
 /// Represents a domain error object.
@@ -9,7 +9,7 @@ public class Error : ValueObject
     /// Gets the error code.
     /// </summary>
     public string Code { get; }
-    
+
     /// <summary>
     /// Gets the error message.
     /// </summary>
@@ -32,7 +32,7 @@ public class Error : ValueObject
     public static readonly Error None = new(string.Empty, string.Empty);
 
     public static implicit operator string(Error error) => error.Code;
-    
+
     /// <inheritdoc />
     protected override IEnumerable<object> GetValues()
     {

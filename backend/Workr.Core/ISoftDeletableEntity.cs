@@ -1,4 +1,4 @@
-﻿namespace Workr.Domain.Abstractions;
+﻿namespace Workr.Core;
 
 public interface ISoftDeletableEntity
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Workr.Api.Contracts.Exercise;
-using Workr.Domain.Abstractions;
+using Workr.Core;
 
 namespace Workr.Api.Controllers;
 
@@ -35,7 +35,7 @@ public sealed class ExerciseController : ControllerBase
     {
         throw new NotImplementedException();
     }
-    
+
     /// <summary>
     /// Get all exercises.
     /// </summary>

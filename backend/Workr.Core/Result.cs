@@ -1,4 +1,4 @@
-﻿namespace Workr.Domain.Abstractions;
+﻿namespace Workr.Core;
 
 /// <summary>
 /// Represents the result of an operation with status information and possibly an error.
@@ -9,12 +9,12 @@ public class Result
     /// Gets a value indicating whether the result is a success result.
     /// </summary>
     public bool IsSuccess { get; }
-    
+
     /// <summary>
     /// Gets a value indicating whether the result is a failure result.
     /// </summary>
     public bool IsFailure => !IsSuccess;
-    
+
     /// <summary>
     /// Gets the error.
     /// </summary>
@@ -44,7 +44,7 @@ public class Result
     /// </summary>
     /// <returns>A new <see cref="Result"/> instance with the success flag set and an empty error.</returns>
     public static Result Success() => new(true, Error.None);
-    
+
     /// <summary>
     /// Returns a success <see cref="Result{TValue}"/> with the specified value.
     /// </summary>
@@ -52,14 +52,14 @@ public class Result
     /// <typeparam name="TValue">The result type.</typeparam>
     /// <returns>A new <see cref="Result{TValue}"/> instance with the success flag set and an empty error.</returns>
     public static Result<TValue> Success<TValue>(TValue value) => new(value, true, Error.None);
-    
+
     /// <summary>
     /// Returns a failure <see cref="Result"/> with the specified error.
     /// </summary>
     /// <param name="error">The error.</param>
     /// <returns>A new <see cref="Result"/> instance with the failure flag set and the specified error.</returns>
     public static Result Failure(Error error) => new(false, error);
-    
+
     /// <summary>
     /// Returns a failure <see cref="Result{TValue}"/> with the specified error.
     /// </summary>
@@ -76,7 +76,7 @@ public class Result
 public sealed class Result<TValue> : Result
 {
     private readonly TValue _value;
-    
+
     /// <summary>
     /// Gets the result value if the result is successful.
     /// </summary>
@@ -84,7 +84,7 @@ public sealed class Result<TValue> : Result
     public TValue Value => IsSuccess
         ? _value!
         : throw new InvalidOperationException("The value of a failure result can not be accessed.");
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Result{TValue}"/> class.
     /// </summary>
@@ -95,6 +95,6 @@ public sealed class Result<TValue> : Result
     {
         _value = value;
     }
-    
+
     public static implicit operator Result<TValue>(TValue value) => Success(value);
 }

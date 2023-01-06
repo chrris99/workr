@@ -1,5 +1,4 @@
-﻿namespace Workr.Domain.Abstractions;
-
+﻿namespace Workr.Core;
 public interface IAuditableEntity
 {
     string CreatedBy { get; }
