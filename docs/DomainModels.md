@@ -6,6 +6,6 @@
 {
     "id": "id",
     "email": "email",
-    "password": "password
+    "password": "password"
 }
 ```
