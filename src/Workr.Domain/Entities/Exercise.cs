@@ -14,5 +14,5 @@ public sealed class Exercise : Entity, IAuditableEntity
     public DateTime CreatedOnUtc { get; }
     public DateTime? ModifiedOnUtc { get; }
 
-    public Exercise(Guid id) : base(id) { }
+    public Exercise(Guid? id = default) : base(id) { }
 }

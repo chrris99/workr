@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿namespace Workr.Domain.Entities;
 
-namespace Workr.Domain.Entities;
-
-public class User : IdentityUser
+public class User
 {
     public string Name { get; set; }
 

@@ -1,7 +1,8 @@
-﻿using MediatR;
+﻿using Mapster;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Workr.Api.Contracts.Exercise;
-using Workr.Application.Exercise.Commands;
+using Workr.Application.Commands.CreateExercise;
 using Workr.Core;
 
 namespace Workr.Api.Controllers;
@@ -43,14 +44,14 @@ public sealed class ExerciseController : ControllerBase
     [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Create([FromBody] CreateExerciseRequest request)
     {
-        var command = new CreateExerciseCommand(request.Name, request.Description, request.Type);
+        var command = request.Adapt<CreateExerciseCommand>();
 
         var result = await _requestSender.Send(command);
 
         if (result.IsFailure)
             return BadRequest(result.Error);
 
-        return Created("uri", command);
+        return Ok();
     }
 
     /// <summary>

@@ -9,9 +9,9 @@ public abstract class Entity : IEquatable<Entity>
     /// Initializes a new instance of the <see cref="Entity"/> class.
     /// </summary>
     /// <param name="id">The entity identifier.</param>
-    protected Entity(Guid id)
+    protected Entity(Guid? id = default)
     {
-        Id = id;
+        Id = id ?? Guid.NewGuid();
     }
 
     /// <summary>
