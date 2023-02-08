@@ -1,9 +1,9 @@
-﻿namespace Workr.Api;
+﻿namespace Workr.Api.Endpoints;
 
 public static partial class Routes
 {
     private const string ExerciseBaseUri = $"{Root}/exercise";
-    
+
     /// <summary>
     /// Define API endpoints for the <see cref="Exercise"/> resource.
     /// </summary>

@@ -19,8 +19,6 @@ public sealed class CreateExerciseCommandHandler : ICommandHandler<CreateExercis
 
     public async Task<Result> Handle(CreateExerciseCommand command, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Handling command {command}", "CreateExerciseCommand");
-
         var exercise = new Exercise
         {
             Name = command.Name,

@@ -1,4 +1,4 @@
-﻿namespace Workr.Api;
+﻿namespace Workr.Api.Endpoints;
 
 /// <summary>
 /// Define API endpoints.

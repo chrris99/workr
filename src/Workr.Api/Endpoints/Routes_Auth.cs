@@ -1,9 +1,9 @@
-﻿namespace Workr.Api;
+﻿namespace Workr.Api.Endpoints;
 
 public static partial class Routes
 {
     private const string AuthBaseUri = $"{Root}/auth";
-    
+
     /// <summary>
     /// Define API endpoints for authentication.
     /// </summary>

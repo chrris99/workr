@@ -2,6 +2,7 @@ using Marten;
 using MediatR;
 using Microsoft.OpenApi.Models;
 using Workr.Api;
+using Workr.Application.Behaviors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +30,8 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services
-    .AddMediatR(Workr.Application.AssemblyReference.Assembly);
+    .AddMediatR(Workr.Application.AssemblyReference.Assembly)
+    .AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
 
 builder.Services.AddMarten(options =>
 {

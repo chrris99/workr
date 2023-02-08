@@ -1,8 +1,9 @@
-﻿using Mapster;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Workr.Api.Contracts.Exercise;
+using Workr.Api.Endpoints;
 using Workr.Application.Commands.CreateExercise;
+using Workr.Application.Queries;
 using Workr.Core;
 
 namespace Workr.Api.Controllers;
@@ -19,7 +20,7 @@ public sealed class ExerciseController : ControllerBase
     /// <summary>
     ///
     /// </summary>
-    /// <param name="mediator"></param>
+    /// <param name="requestSender"></param>
     public ExerciseController(ISender requestSender) => _requestSender = requestSender;
 
     /// <summary>
@@ -44,7 +45,12 @@ public sealed class ExerciseController : ControllerBase
     [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Create([FromBody] CreateExerciseRequest request)
     {
-        var command = request.Adapt<CreateExerciseCommand>();
+        var command = new CreateExerciseCommand(
+            request.Name,
+            request.Description,
+            request.Type,
+            request.RequiredAccessories,
+            request.TargetMuscleGroups);
 
         var result = await _requestSender.Send(command);
 
@@ -63,7 +69,12 @@ public sealed class ExerciseController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> Get()
     {
-        throw new NotImplementedException();
+        var result = await _requestSender.Send(new GetExercisesQuery());
+
+        if (result.IsFailure)
+            return BadRequest(result.Error);
+
+        return Ok(result.Value);
     }
 
     /// <summary>

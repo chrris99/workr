@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Workr.Api.Contracts.Auth;
+using Workr.Api.Endpoints;
 using Workr.Core;
 
 namespace Workr.Api.Controllers;

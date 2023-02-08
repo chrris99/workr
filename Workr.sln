@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.Architecture.UnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.Core", "src\Workr.Core\Workr.Core.csproj", "{C16AAF01-0B63-42B7-80E2-7374F430DA97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.IntegrationTests", "test\Workr.IntegrationTests\Workr.IntegrationTests.csproj", "{8F83A66C-3CD6-487D-BCAD-B2223174D81B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.Application.UnitTests", "test\Workr.Application.UnitTests\Workr.Application.UnitTests.csproj", "{27E02220-AE84-4CE2-AEB5-51E381A82B31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +52,13 @@ Global
 		{C16AAF01-0B63-42B7-80E2-7374F430DA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C16AAF01-0B63-42B7-80E2-7374F430DA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C16AAF01-0B63-42B7-80E2-7374F430DA97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F83A66C-3CD6-487D-BCAD-B2223174D81B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F83A66C-3CD6-487D-BCAD-B2223174D81B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F83A66C-3CD6-487D-BCAD-B2223174D81B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F83A66C-3CD6-487D-BCAD-B2223174D81B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27E02220-AE84-4CE2-AEB5-51E381A82B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E02220-AE84-4CE2-AEB5-51E381A82B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27E02220-AE84-4CE2-AEB5-51E381A82B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27E02220-AE84-4CE2-AEB5-51E381A82B31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

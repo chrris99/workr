@@ -1,9 +1,9 @@
-﻿namespace Workr.Api;
+﻿namespace Workr.Api.Endpoints;
 
 public static partial class Routes
 {
     private const string TemplateBaseUri = $"{Root}/template";
-    
+
     /// <summary>
     /// Define API endpoints for <see cref=""/> resources.
     /// </summary>
