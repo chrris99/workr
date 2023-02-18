@@ -15,4 +15,9 @@
       <ProjectReference Include="..\Workr.Core\Workr.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Aggregates" />
+      <Folder Include="Events" />
+    </ItemGroup>
+
 </Project>

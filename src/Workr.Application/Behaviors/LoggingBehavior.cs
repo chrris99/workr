@@ -5,27 +5,27 @@ using Workr.Core.Mediator;
 
 namespace Workr.Application.Behaviors;
 
-public sealed class LoggingPipelineBehavior<TRequest, TResponse> : IBehavior<TRequest, TResponse>
+public sealed class LoggingBehavior<TRequest, TResponse> : IBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
     where TResponse : Result
 {
-    private readonly ILogger<LoggingPipelineBehavior<TRequest, TResponse>> _logger;
+    private readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger;
 
-    public LoggingPipelineBehavior(ILogger<LoggingPipelineBehavior<TRequest, TResponse>> logger) => _logger = logger;
+    public LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>> logger) => _logger = logger;
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
         var requestName = request.GetType().Name;
 
-        _logger.LogInformation("Handling request {requestName}", requestName);
+        _logger.LogInformation("Handling request {requestName} started", requestName);
 
         var result = await next();
 
         if (result.IsFailure)
-            _logger.LogError("Handling request {requestName} failed with error {error}",
+            _logger.LogError("Handling request {requestName} failed with the following error: {error}",
                 requestName,
-                result.Error);
+                result.Error.Message);
 
         if (result.IsSuccess)
             _logger.LogInformation("Handling request {requestName} completed successfully", requestName);

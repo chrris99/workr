@@ -12,7 +12,10 @@ services:
       - 5432:5432
 
   postgres-admin:
-    image: adminer
+    image: dpage/pgadmin4
     restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: conforti.christian@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - 8080:8080

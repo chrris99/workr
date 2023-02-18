@@ -31,7 +31,8 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services
     .AddMediatR(Workr.Application.AssemblyReference.Assembly)
-    .AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
+    .AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>))
+    .AddScoped(typeof(IPipelineBehavior<,>), typeof(StopwatchBehavior<,>));
 
 builder.Services.AddMarten(options =>
 {

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Workr.Api.Contracts.Exercise;
 using Workr.Api.Endpoints;
 using Workr.Application.Commands.CreateExercise;
+using Workr.Application.Commands.DeleteExercise;
+using Workr.Application.Commands.UpdateExercise;
 using Workr.Application.Queries;
 using Workr.Core;
 
@@ -18,7 +20,7 @@ public sealed class ExerciseController : ControllerBase
     private readonly ISender _requestSender;
 
     /// <summary>
-    ///
+    /// Initializes a new instance of the <see cref="ExerciseController"/> class.
     /// </summary>
     /// <param name="requestSender"></param>
     public ExerciseController(ISender requestSender) => _requestSender = requestSender;
@@ -85,9 +87,22 @@ public sealed class ExerciseController : ControllerBase
     [HttpGet]
     [Route(Routes.Exercise.GetById)]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Get(string id)
     {
-        throw new NotImplementedException();
+        var result = await _requestSender.Send(new GetExerciseByIdQuery(id));
+
+        if (result.IsFailure)
+        {
+            return NotFound(result.Error);
+        }
+
+        return Ok(new ExerciseResponse(
+            result.Value.Name,
+            result.Value.Description,
+            result.Value.Type,
+            result.Value.RequiredAccessories,
+            result.Value.TargetMuscleGroups));
     }
 
     /// <summary>
@@ -96,16 +111,23 @@ public sealed class ExerciseController : ControllerBase
     [HttpPut]
     [Route(Routes.Exercise.Update)]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Update(string id, [FromBody] UpdateExerciseRequest request)
     {
-        // One or two slides: flow
-        // One slide: OpenAPI (Swagger) documentation from endpoints
-        // Create request contracts in API layer
-        // Map incoming request to Exercise domain object
-        // Pass domain object to repository
-        // Repository handles data access
-        // Return exercise response defined in API layer contract
-        throw new NotImplementedException();
+        var command = new UpdateExerciseCommand(
+            id,
+            request.Name,
+            request.Description,
+            request.Type,
+            request.RequiredAccessories,
+            request.TargetMuscleGroups);
+
+        var result = await _requestSender.Send(command);
+
+        if (result.IsFailure)
+            return NotFound(result.Error);
+
+        return Ok();
     }
 
     /// <summary>
@@ -117,6 +139,11 @@ public sealed class ExerciseController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> Delete(string id)
     {
-        throw new NotImplementedException();
+        var result = await _requestSender.Send(new DeleteExerciseCommand(id));
+
+        if (result.IsFailure)
+            return BadRequest(result.Error);
+
+        return NoContent();
     }
 }

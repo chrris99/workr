@@ -1,8 +1,8 @@
-﻿using Workr.Domain.Entities;
+using Workr.Domain.Entities;
 
-namespace Workr.Api.Contracts.Exercise;
+namespace Workr.Contracts.Exercise;
 
-public sealed record ExerciseResponse(
+public sealed record CreateExerciseRequest(
     string Name,
     string? Description,
     string Type,

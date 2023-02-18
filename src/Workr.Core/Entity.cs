@@ -3,56 +3,36 @@
 /// <summary>
 /// Abstract base class for entities.
 /// </summary>
-public abstract class Entity : IEquatable<Entity>
+public abstract class Entity<TId> : IEquatable<Entity<TId>>
+    where TId : notnull
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Entity"/> class.
+    /// Initializes a new instance of the <see cref="Entity{TId}"/> class.
     /// </summary>
     /// <param name="id">The entity identifier.</param>
-    protected Entity(Guid? id = default)
-    {
-        Id = id ?? Guid.NewGuid();
-    }
+    protected Entity(TId id)
+        => Id = id;
 
     /// <summary>
     /// Gets the entity identifier.
     /// </summary>
-    public Guid Id { get; private init; }
+    private TId Id { get; }
 
-    public static bool operator ==(Entity? first, Entity? second)
-    {
-        if (ReferenceEquals(null, first)) return false;
-        if (ReferenceEquals(null, second)) return false;
+    public static bool operator ==(Entity<TId> left, Entity<TId> right)
+        => Equals(left, right);
 
-        return first.Equals(second);
-    }
-
-    public static bool operator !=(Entity? first, Entity? second)
-    {
-        return !(first == second);
-    }
+    public static bool operator !=(Entity<TId> left, Entity<TId> right)
+        => !Equals(left, right);
 
     /// <inheritdoc />
-    public bool Equals(Entity? other)
-    {
-        if (ReferenceEquals(null, other)) return false;
-
-        return Id.Equals(other.Id);
-    }
+    public bool Equals(Entity<TId>? other)
+        => Equals((object?)other);
 
     /// <inheritdoc />
     public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (obj.GetType() != GetType()) return false;
-        if (obj.GetType() != typeof(Entity)) return false;
-
-        return Equals(obj as Entity);
-    }
+        => obj is Entity<TId> entity && Id.Equals(entity.Id);
 
     /// <inheritdoc />
     public override int GetHashCode()
-    {
-        return Id.GetHashCode();
-    }
+        => Id.GetHashCode();
 }

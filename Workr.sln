@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.IntegrationTests", "t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.Application.UnitTests", "test\Workr.Application.UnitTests\Workr.Application.UnitTests.csproj", "{27E02220-AE84-4CE2-AEB5-51E381A82B31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workr.Contracts", "src\Workr.Contracts\Workr.Contracts.csproj", "{45423FC7-7A81-4AC8-9780-F8FD9572FED5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,5 +62,9 @@ Global
 		{27E02220-AE84-4CE2-AEB5-51E381A82B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27E02220-AE84-4CE2-AEB5-51E381A82B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27E02220-AE84-4CE2-AEB5-51E381A82B31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45423FC7-7A81-4AC8-9780-F8FD9572FED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45423FC7-7A81-4AC8-9780-F8FD9572FED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45423FC7-7A81-4AC8-9780-F8FD9572FED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45423FC7-7A81-4AC8-9780-F8FD9572FED5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
